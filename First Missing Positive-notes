@@ -1,0 +1,36 @@
+Q:
+
+Given an unsorted integer array, find the first missing positive integer.
+
+For example,
+Given [1,2,0] return 3,
+and [3,4,-1,1] return 2.
+
+Your algorithm should run in O(n) time and uses constant space.
+
+寻找数组中第一个未出现的正整数，题目本身比较常见，关键在于题目要求只能使用常数额外空间。
+
+A:
+
+虽然不能再另外开辟非常数级的额外空间，但是可以在输入数组上就地进行swap操作。
+
+思路：交换数组元素，使得数组中第i位存放数值(i+1)。最后遍历数组，寻找第一个不符合此要求的元素，返回其下标。整个过程需要遍历两次数组，复杂度为O(n)。
+
+A few quick thoughts:
+
+Sort all numbers and iterate through to find the first missing integer? No, most sorting algorithms take time at least O(nlogn).
+How about linear sorting algorithm? No, bucket sort requires O(n) space.
+Mapping all positive integers to a hash table and iterate from 1 to the length of the array to find out the first missing one? 
+No, hash table requires O(n) space.
+
+Then, how to solve this?
+
+Let's take another look at the problem. It is asking for the first missing POSITIVE integer.
+So, given a number in the array,
+
+if it is non-positive, ignore it;
+if it is positive, say we have A[i] = x, we know it should be in slot A[x-1]! 
+That is to say, we can swap A[x-1] with A[i] so as to place x into the right place.
+We need to keep swapping until all numbers are either non-positive or in the right places. 
+The result array could be something like [1, 2, 3, 0, 5, 6, ...]. 
+Then it's easy to tell that the first missing one is 4 by iterate through the array and compare each value with their index.
