@@ -20,6 +20,7 @@ class Solution {
 //f[1] = f[1] + f[0] = 1
 //f[2] = f[2] + f[1], f[2] = f[2] + f[0], f[2] = 2
 //f[3] = f[3] + f[2], f[3] = f[3] + f[1], f[3] = f[3] + f[0], f[3] = 2 + 1 + 1 = 4
+//注意把int改成long，因为可能overflow
 public class Solution {
     public int climbStairs2(int n) {
         int[] f = new int[n+1];
