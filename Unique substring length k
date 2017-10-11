@@ -1,0 +1,18 @@
+// you can change string and k
+public static void main(String[] args) {
+		String s = "caaaab";
+		int l = s.length();
+		int k = 4;
+		Set<String> hs = new HashSet<>();
+		for (int i = 0; i < l - k + 1; ++i) {		      
+		     hs.add(s.substring(i, i + k));
+		}
+		String[] results = new String[hs.size()];
+		int i = 0;
+		for(String str : hs) {
+			results[i] = str;
+			i++;
+		}
+		Arrays.sort(results);
+		return results;
+	}
