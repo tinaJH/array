@@ -1,0 +1,12 @@
+//Input: "Let's take LeetCode contest"
+//Output: "s'teL ekat edoCteeL tsetnoc"
+//trim(): string with omitted leading and trailing spaces
+class Solution {
+    public String reverseWords(String s) {
+        String words[] = s.split(" ");
+        StringBuilder res=new StringBuilder();
+        for (String word: words)
+            res.append(new StringBuffer(word).reverse().toString() + " ");
+        return res.toString().trim();
+    }
+}
