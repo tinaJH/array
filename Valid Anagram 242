@@ -1,0 +1,41 @@
+//leetcode使用hashtable，必须import
+import java.util.Hashtable; 
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        
+        //if contain unicode, use hashtable
+        //if just characters, use array int[26]
+        Hashtable<Character, Integer> table = new Hashtable<>();
+        
+        for (int i = 0; i < s.length(); i++) {
+            
+            if (table.get(s.charAt(i)) == null) {
+                table.put(s.charAt(i), 1);
+            } else {
+                int count = table.get(s.charAt(i));
+                count++;
+                table.put(s.charAt(i), count);
+            }
+        }
+        
+        for (int i = 0; i < t.length(); i++) {
+            
+            if (table.get(t.charAt(i)) == null) {
+                return false;
+            } 
+            int count = table.get(t.charAt(i));
+                      
+            if (count == 0) {
+                return false;
+            } else {
+                count--;
+                table.put(t.charAt(i), count);
+            }
+            
+        }
+        return true;
+    }
+}
