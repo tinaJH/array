@@ -1,3 +1,4 @@
+//assume two nodes exits
 // 在root为根的二叉树中找A,B的LCA:
     // 如果找到了就返回这个LCA
     // 如果只碰到A，就返回A (从上到下找）
