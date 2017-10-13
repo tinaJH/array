@@ -1,0 +1,36 @@
+public class Solution {
+    /*
+     * @param root: a TreeNode, the root of the binary tree
+     * @return: 
+     */
+    public void flatten(TreeNode root) {
+        // write your code here
+        helper(root);
+    }
+    
+    private TreeNode helper(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        
+        TreeNode leftlast = helper(root.left);
+        TreeNode rightlast = helper(root.right);
+        
+        if (leftlast != null) {
+            leftlast.right = root.right;
+            root.right = root.left;
+            root.left = null;
+        }
+        
+        if (rightlast != null) {
+            return rightlast;
+        }
+        
+        if (leftlast != null) {
+            return leftlast;
+        }
+        
+        return root;
+        
+    }
+}
