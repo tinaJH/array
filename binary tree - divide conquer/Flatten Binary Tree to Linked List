@@ -1,3 +1,4 @@
+//divide and conquer
 public class Solution {
     /*
      * @param root: a TreeNode, the root of the binary tree
