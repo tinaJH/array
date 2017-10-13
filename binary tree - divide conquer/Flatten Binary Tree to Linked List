@@ -17,6 +17,9 @@ public class Solution {
         TreeNode leftlast = helper(root.left);
         TreeNode rightlast = helper(root.right);
         
+        //leftlast next -> root.right
+        //root next -> root.left
+        // root.left -> null
         if (leftlast != null) {
             leftlast.right = root.right;
             root.right = root.left;
